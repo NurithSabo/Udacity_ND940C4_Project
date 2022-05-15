@@ -27,7 +27,7 @@ class ReminderListFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding =
             DataBindingUtil.inflate(
                 inflater,
@@ -80,7 +80,7 @@ class ReminderListFragment : BaseFragment() {
             Intent(activity, AuthenticationActivity::class.java)
         //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        //Toast.makeText(getActivity(),"You're logged out",Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity,"You're logged out",Toast.LENGTH_SHORT).show()
         startActivity(intent)
         requireActivity().finish()
     }
@@ -103,5 +103,4 @@ class ReminderListFragment : BaseFragment() {
 //        display logout as menu item
         inflater.inflate(R.menu.main_menu, menu)
     }
-
 }

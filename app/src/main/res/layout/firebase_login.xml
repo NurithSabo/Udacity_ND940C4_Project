@@ -11,7 +11,7 @@
     tools:context=".authentication.AuthenticationActivity"
     android:background="@color/background">
 <androidx.appcompat.widget.AppCompatImageView
-    android:id="@+id/terkep_kep"
+    android:id="@+id/map_pic"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toTopOf="@+id/login_button"

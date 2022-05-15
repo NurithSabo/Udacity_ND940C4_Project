@@ -15,44 +15,71 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@color/background"
+        android:background="@drawable/login"
+        android:backgroundTint="#99ffeddc"
+        android:backgroundTintMode="src_over"
         tools:context=".locationreminders.ReminderDescriptionActivity">
-        <!--android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"-->
-        <!--add the design of the reminder details-->
-
         <TextView
-            android:id="@+id/reminderTitle"
-            android:layout_marginTop="100dp"
+            android:id="@+id/you_reached"
+            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text= "@{reminderDataItem.title}"
+            android:text= "@string/reached_the_location"
             android:textSize="@dimen/text_size_large"
             android:textAlignment="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
         <TextView
+            android:id="@+id/reminderTitle"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text= "@{reminderDataItem.title}"
+            android:textSize="@dimen/text_size_large"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@+id/you_reached"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
             android:id="@+id/reminderDescription"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text= "@{reminderDataItem.description}"
             android:textSize="@dimen/text_size_large"
             android:textAlignment="center"
-            app:layout_constraintTop_toTopOf="@id/reminderTitle"
+            app:layout_constraintTop_toBottomOf="@id/reminderTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <ImageView
-            android:id="@+id/terkep_kep"
+            android:id="@+id/map_pic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/map"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reminderDescription" />
+
+        <Button
+            android:id="@+id/ok_button"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_marginTop="30dp"
+            android:text="@string/ok_button_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/map"/>
+            app:layout_constraintTop_toBottomOf="@id/map_pic"
+            android:padding="@dimen/text_padding"
+            android:textSize="@dimen/button_text_size"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

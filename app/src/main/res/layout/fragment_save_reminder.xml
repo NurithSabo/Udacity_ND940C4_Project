@@ -14,7 +14,9 @@
         android:id="@+id/save_reminder_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background">
+        android:background="@drawable/login"
+        android:backgroundTint="#99ffeddc"
+        android:backgroundTintMode="src_over">
 
         <EditText
             android:id="@+id/reminderTitle"
@@ -58,6 +60,7 @@
             android:id="@+id/selectedLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:layout_marginEnd="@dimen/margin_normal"
             android:layout_marginRight="@dimen/margin_normal"
             android:text="@{viewModel.reminderSelectedLocationStr}"
@@ -65,7 +68,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/selectLocation"
             tools:text="Location"
-            android:maxWidth="120dp"/>
+            android:maxWidth="130dp"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/saveReminder"

@@ -61,27 +61,25 @@ class ReminderListFragmentTest : AutoCloseKoinTest() {
         }
         //clear data for a fresh start via calling repository's deleteAllReminders method
        runBlocking {
-           repository.deleteAllReminders()
-           reminder1 = ReminderDTO(
-               "1. Reminder",
-               "Test description 1.",
-               "1. Testing loc.",
-               0.0,
-               0.0
-           )
-           reminder2 = ReminderDTO(
-               "2. Reminder",
-               "Test description 2.",
-               "2. Testing loc.",
-               0.0,
-               0.0
-           )
-           repository.saveReminder(reminder1)
-           repository.saveReminder(reminder2)
+            repository.deleteAllReminders()
+            reminder1 = ReminderDTO(
+            "Barrow",
+            "Be thankful to God for being here.",
+            "Barrow airport",
+            71.284809,
+            -156.773695,
+            "1")
+            reminder2 = ReminderDTO(
+            "Ein Gedi Oasis",
+            "Be happy to be here.",
+            "Ein Gedi",
+            31.450816,
+            35.382375,
+            "2")
+            repository.saveReminder(reminder1)
+            repository.saveReminder(reminder2)
        }
     }
-
-//  _TODO: test the navigation of the fragments.
 
     @Test
     fun navigationTest() {
@@ -101,7 +99,6 @@ class ReminderListFragmentTest : AutoCloseKoinTest() {
         )
     }
 
-// _TODO: test the displayed data on the UI.
 @Test
 fun displayDataTest()  {
     runBlockingTest {
@@ -114,9 +111,6 @@ fun displayDataTest()  {
     onView(withText(reminder1.description)).check(ViewAssertions.matches(isDisplayed()))
     onView(withText(reminder1.location)).check(ViewAssertions.matches(isDisplayed()))
     }}
-
-
-//  _TODO: add testing for the error messages.
 
     @Test
     fun noDataTest() = runBlockingTest {

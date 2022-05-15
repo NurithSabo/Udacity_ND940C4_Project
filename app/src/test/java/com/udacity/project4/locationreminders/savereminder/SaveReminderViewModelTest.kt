@@ -15,6 +15,7 @@ import com.udacity.project4.locationreminders.reminderslist.ReminderDataItem
 import junit.framework.TestCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.CoreMatchers.nullValue
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.hasSize
@@ -157,5 +158,15 @@ class SaveReminderViewModelTest : TestCase() {
         saveReminderViewModel.mapSelected()
         result = saveReminderViewModel.mapSelectedEvent
         assertThat(result.value).isTrue()
+    }
+
+    @Test
+    fun check_loading() = mainCoroutineRule.runBlockingTest {
+
+        mainCoroutineRule.pauseDispatcher()
+        saveReminderViewModel.validateAndSaveReminder(reminder1)
+        assertThat(saveReminderViewModel.showLoading.getOrAwaitValue(), `is`(true))
+        mainCoroutineRule.resumeDispatcher()
+        assertThat(saveReminderViewModel.showLoading.getOrAwaitValue(), `is`(false))
     }
 }

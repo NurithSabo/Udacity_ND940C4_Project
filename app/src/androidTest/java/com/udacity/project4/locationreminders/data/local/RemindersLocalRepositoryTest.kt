@@ -24,7 +24,6 @@ import org.junit.runner.RunWith
 @MediumTest
 class RemindersLocalRepositoryTest {
 
-//   _TODO: Add testing implementation to the RemindersLocalRepository.kt
 //  Executes each task synchronously using Architecture Components.
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
@@ -66,10 +65,11 @@ class RemindersLocalRepositoryTest {
             "1")
 
         localDataSource.saveReminder(reminder)
+
         //WHEN:
         val result = localDataSource.getReminder(reminder.id) as Result.Success
-        //THEN:
 
+        //THEN:
         assertThat(result.data.title, `is`(reminder.title))
         assertThat(result.data.description, `is`(reminder.description))
         assertThat(result.data.location, `is`(reminder.location))
