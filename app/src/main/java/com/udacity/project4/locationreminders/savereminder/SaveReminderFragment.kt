@@ -175,7 +175,8 @@ class SaveReminderFragment : BaseFragment()
             if (exception is ResolvableApiException && resolve)
             {
                 try {
-                    startIntentSenderForResult(exception.resolution.intentSender,
+                    startIntentSenderForResult(
+                        exception.resolution.intentSender,
                         REQUEST_TURN_DEVICE_LOCATION_ON,
                         null,0,0,0,null)
                 } catch (sendEx: IntentSender.SendIntentException) {
@@ -235,13 +236,20 @@ class SaveReminderFragment : BaseFragment()
             PendingIntent.FLAG_UPDATE_CURRENT)
     }
 
+//  Lesson 2/4
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_TURN_DEVICE_LOCATION_ON) {
+            checkDeviceLocationSettingsAndStartGeofence(false)
+        }
+    }
+
 //    Lesson 2
       override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
         grantResults: IntArray) {
 
-        Log.i("asd","onRequestPermissionResult")
         if (
             grantResults.isEmpty()
             ||

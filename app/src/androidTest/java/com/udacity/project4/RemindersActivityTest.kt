@@ -21,7 +21,6 @@ import com.udacity.project4.locationreminders.savereminder.SaveReminderViewModel
 import com.udacity.project4.util.DataBindingIdlingResource
 import com.udacity.project4.util.monitorActivity
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -41,7 +40,7 @@ import java.time.LocalDateTime
 class RemindersActivityTest :
     AutoCloseKoinTest() {// Extended Koin Test - embed autoclose @after method to close Koin after every test
 
-    private lateinit var realRepository : ReminderDataSource
+    private lateinit var realDataSource : ReminderDataSource
     private lateinit var appContext: Application
     private lateinit var title : String
     private lateinit var description : String
@@ -74,14 +73,14 @@ class RemindersActivityTest :
             single {
                 RemindersListViewModel(
                     appContext,
-                    realRepository
+                    realDataSource
                     as ReminderDataSource)
             }
 
             single {
                 SaveReminderViewModel(
                     appContext,
-                    realRepository
+                    realDataSource
                     as ReminderDataSource
                 )
             }
@@ -94,13 +93,13 @@ class RemindersActivityTest :
             androidContext(appContext)
             modules(listOf(myModule))
         }
-        realRepository = get()
+        realDataSource = get()
     }
 
     @After
     fun reset() {
         runBlocking {
-           realRepository.deleteAllReminders()
+           realDataSource.deleteAllReminders()
         }
     }
 
